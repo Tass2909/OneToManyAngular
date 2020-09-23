@@ -1,0 +1,17 @@
+<h2>Comments list of the post: {{contents}} </h2>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Created at</th>
+            <th>Updated at</th>
+            <th>Text</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let comment of tabComments">
+            <td>{{comment.createdAt| date: 'short'}}</td>
+            <td>{{comment.updatedAt| date: 'short'}}</td>
+            <td>{{comment.text}}</td>
+        </tr>
+    </tbody>
+</table>

@@ -1,0 +1,25 @@
+<h2>Posts list</h2>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Created at</th>
+            <th>Updated at</th>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Content</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let content of contents">
+            <td>{{content.createdAt| date: 'short'}}</td>
+            <td>{{content.updatedAt| date: 'short'}}}</td>
+            <td>{{content.title}}</td>
+            <td>{{content.description}}</td>
+            <td>{{content.content}}</td>
+            <td>
+                <button (click)="viewComments(content.id)" class="btn btn-primary">View comments</button>
+            </td>
+        </tr>
+    </tbody>
+</table>
