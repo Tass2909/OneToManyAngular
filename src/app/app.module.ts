@@ -8,13 +8,15 @@ import { AppComponent } from './app.component';
 import { PostsListComponent } from './posts-list/posts-list.component';
 import { CreatePostComponent } from './create-post/create-post.component';
 import { CommentsListComponent } from './comments-list/comments-list.component';
+import { UpdatePostComponent } from './update-post/update-post.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     PostsListComponent,
     CreatePostComponent,
-    CommentsListComponent
+    CommentsListComponent,
+    UpdatePostComponent
   ],
   imports: [
     BrowserModule,

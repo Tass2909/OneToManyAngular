@@ -1,13 +1,14 @@
 <div class="col-md-8 offset-md-2">
-    <h3>Create Post</h3>
+    <h3>Update Post</h3>
     <div *ngIf="alert" class="alert alert-success alert-dismissible fade show" role="alert">
-        <strong>Create post done</strong>
+        <strong>Update done</strong>
         <div><a href="/posts">Return to the post list</a></div>
         <button (click)="closeAlert()" type="button" class="close" data-dismiss="alert" aria-label="Close">
             <span aria-hidden="true">&times;</span>
         </button>
     </div>
     <form (ngSubmit)="onSubmit()">
+
         <div class="form-group">
             <label for="title">
                 Title
@@ -28,4 +29,4 @@
         </div>
         <button type="submit" class="btn btn-success">Submit</button>
     </form>
-    </div>
+</div>

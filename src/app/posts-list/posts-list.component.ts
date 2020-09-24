@@ -23,11 +23,21 @@ export class PostsListComponent implements OnInit {
   private getPosts() {
     this.postService.getPostsList().subscribe(data => {
       this.posts = data;
-      this.contents = this.posts[Object.keys(this.posts)[0]];
+      this.contents = this.posts['content'];
     });
   }
 
   viewComments(id: number) {
     this.route.navigate(['view-comments', id]);
+  }
+
+  updatePost(id: number) {
+    this.route.navigate(['update-post', id]);
+  }
+
+  deletePost(id: number) {
+    this.postService.deletePost(id).subscribe(data => {
+      this.getPosts()
+    });
   }
 }
