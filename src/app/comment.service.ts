@@ -13,11 +13,21 @@ export class CommentService {
     return this.httpClient.get<any>(`${this.baseURL}/${id}/comments`);
   }
 
-  createComment(id:number, comment:Comment):Observable<any>{
+  getCommentById(idComment:number, idPost:number):Observable<any>{
+    return this.httpClient.get<any>(`${this.baseURL}/${idPost}/comments/${idComment}`);
+  }
+
+  createComment(id: number, comment: Comment): Observable<any> {
     return this.httpClient.post(`${this.baseURL}/${id}/comments`, comment);
   }
 
-  deleteComment(idcomment: number, idpost:number): Observable<Object> {
+  updateComment(idpost: number, idcomment: number, comment: Comment): Observable<Object> {
+    return this.httpClient.put(`${this.baseURL}/${idpost}/comments/${idcomment}`, comment);
+  }
+
+  deleteComment(idcomment: number, idpost: number): Observable<Object> {
     return this.httpClient.delete(`${this.baseURL}/${idpost}/comments/${idcomment}`);
   }
+
+
 }

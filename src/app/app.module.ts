@@ -9,6 +9,7 @@ import { PostsListComponent } from './posts-list/posts-list.component';
 import { CreatePostComponent } from './create-post/create-post.component';
 import { CommentsListComponent } from './comments-list/comments-list.component';
 import { UpdatePostComponent } from './update-post/update-post.component';
+import { UpdateCommentComponent } from './update-comment/update-comment.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { UpdatePostComponent } from './update-post/update-post.component';
     PostsListComponent,
     CreatePostComponent,
     CommentsListComponent,
-    UpdatePostComponent
+    UpdatePostComponent,
+    UpdateCommentComponent
   ],
   imports: [
     BrowserModule,

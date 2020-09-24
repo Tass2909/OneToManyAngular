@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CommentService } from '../comment.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Post } from '../post';
 import { Comment } from '../comment';
 import { PostService } from '../post.service';
@@ -11,18 +11,18 @@ import { PostService } from '../post.service';
   styleUrls: ['./comments-list.component.css']
 })
 export class CommentsListComponent implements OnInit {
-  id: number;
+  idPost: number;
   alert:boolean = false;
   posts: Post[];
   contents = [];
   comments: Comment[];
   tabComments = [];
   commentaire: Comment = new Comment();
-  constructor(private commentService: CommentService, private routeActive: ActivatedRoute, private postService: PostService) { }
+  constructor(private commentService: CommentService, private routeActive: ActivatedRoute, private postService: PostService, private route:Router) { }
 
   ngOnInit(): void {
-    this.id = this.routeActive.snapshot.params['id'];
-    this.postService.getPostById(this.id).subscribe(dataPost => {
+    this.idPost = this.routeActive.snapshot.params['id'];
+    this.postService.getPostById(this.idPost).subscribe(dataPost => {
       this.posts = dataPost;
       this.contents = this.posts['title'];
     });
@@ -30,14 +30,14 @@ export class CommentsListComponent implements OnInit {
   }
 
   private getAllComments(){
-    this.commentService.getCommentsList(this.id).subscribe(data => {
+    this.commentService.getCommentsList(this.idPost).subscribe(data => {
       this.comments = data;
       this.tabComments = this.comments['content'];
     });
   }
 
   onSubmit() {
-    this.commentService.createComment(this.id, this.commentaire).subscribe(data => {
+    this.commentService.createComment(this.idPost, this.commentaire).subscribe(data => {
       this.alert = true;
       this.getAllComments();
     },
@@ -47,8 +47,12 @@ export class CommentsListComponent implements OnInit {
     this.alert = false;
   }
 
+  updateComment(idComment:number){
+    this.route.navigate(['update-comment/',idComment,this.idPost]);
+  }
+
   deleteComment(idcomment:number){
-    this.commentService.deleteComment(idcomment,this.id).subscribe(data => {
+    this.commentService.deleteComment(idcomment,this.idPost).subscribe(data => {
       this.getAllComments();
     });
   }

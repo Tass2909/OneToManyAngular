@@ -1,0 +1,9 @@
+<div class="col-md-8 offset-md-2">
+    <h3>Update Comment</h3>
+    <form (ngSubmit)="onSubmit()">
+        <div class="form-group">
+            <textarea type="text" class="form-control" id="text" [(ngModel)]="comment.text" name="text"></textarea>
+        </div>
+        <button type="submit" class="btn btn-success">Submit</button>
+    </form>
+</div>
